@@ -1,1 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container-fluid{
+    padding: 0;
+}
+
+.container{
+    margin-top: 2em;
+}
+
+.example-container {
+    /* width: 500px; */
+    height: 100vh;
+    min-height: 100vh;
+    /* border: 1px solid rgba(0, 0, 0, 0.5); */
+}
+  
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+  
+.example-sidenav {
+    padding: 20px;
+    min-width: 20em;
+}
+
+.buttonToggle{
+      min-width: 0;
+      padding: 0 10px;
+}
+
+.menu{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.menu > li > a{
+    text-decoration: none;
+    color: black;
+}
+
+.divider{
+    border: #00000014 0.1em solid;
+    margin-bottom: 2em;
+}
+
+.newAnswer{
+    display: inline;
+    cursor: pointer;
+}
+
+/* .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+} */
+
+.numPregunta{
+    max-width: 10em;
+}
+
+.containerAccordion{
+    margin-bottom: 0.5em;
+}
+
+
+/* .mat-form-field-underline {
+    //linea inferior del input
+    background-color: green !important;
+}  */
+
+.mat-form-field-ripple {
+    /*color de linea inferior del input al hacer clic*/
+    /* background-color: red !important; */
+}
+  
