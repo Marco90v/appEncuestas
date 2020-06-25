@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let encuesta of encuestas">{{encuesta.nameAnswer}} - 
+        <a [routerLink]="['/edit',encuesta.ID]">editar</a> - 
+        <a [routerLink]="['/result',encuesta.ID]">resultados</a>
+    </li>
+</ul>

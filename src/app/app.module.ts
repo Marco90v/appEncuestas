@@ -15,12 +15,14 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NuevaComponent } from './components/nueva/nueva.component';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    NuevaComponent
+    NuevaComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,95 +1,61 @@
 <form [formGroup]="formAnswers" >
-    <div class="form-row">
-      <div class="form-group col-md-12">
-        <mat-form-field appearance="legacy" class="form-group col-md-12" >
-            <mat-label>Nombre de la encuesta</mat-label>
-            <input matInput formControlName="nameAnswer" required>
-        </mat-form-field>
-      </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <mat-form-field appearance="legacy" class="form-group col-md-12" >
+        <mat-label>Nombre de la encuesta</mat-label>
+        <input matInput formControlName="nameAnswer" required>
+      </mat-form-field>
     </div>
-    <div class="divider"></div>
+  </div>
 
-    <div>
-        <div (click)="newAnswer()" class="newAnswer">
-            <svg class="bi bi-plus-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
-            </svg>
-            Agregar pregunta
-        </div>
-        <ng-container formArrayName="preguntas" >
-            <div *ngFor="let p of preguntas.controls; index as i" id={{i+1}} class="containerAccordion">
-                <ng-container [formGroup]="p" >
+  <!-- separador -->
+  <div class="divider"></div> 
 
-                    <mat-accordion #accordion multi>
-                        <mat-expansion-panel expanded>
-                            <mat-expansion-panel-header>
-                                <mat-panel-title class="numPregunta"> Pregunta n° {{i+1}}  </mat-panel-title>
-                                <mat-panel-description> {{p.get('pregunta').value}} </mat-panel-description>
-                            </mat-expansion-panel-header>
-
-                            <button mat-button>
-                                <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
-                                </svg>
-                            </button>
-                            <mat-form-field class="form-group col-md-12" >
-                                <mat-label>Pregunta</mat-label>
-                                <input matInput formControlName="pregunta" required>
-                            </mat-form-field>
-                            <mat-form-field class="form-group col-md-12">
-                                <mat-label>Tipo de Respuesta</mat-label>
-                                <mat-select formControlName="tipo" required>
-                                    <mat-option value="0">Si/No</mat-option>
-                                    <mat-option value="1">1 al 5</mat-option>
-                                    <mat-option value="2">1 al 10</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                </ng-container>
-
-
-
-            </div>
+  <div>
+    <div (click)="newAnswer()" class="newAnswer">
+      <svg class="bi bi-plus-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
+      </svg>
+      Agregar pregunta
+    </div>
+    <ng-container formArrayName="preguntas" >
+      <div *ngFor="let p of preguntas.controls; index as i" id={{i+1}} class="containerAccordion">
+        <ng-container [formGroup]="p" >
+          <mat-accordion >
+            <mat-expansion-panel expanded>
+              <mat-expansion-panel-header>
+                <mat-panel-title class="numPregunta"> Pregunta n° {{i+1}}  </mat-panel-title>
+                <mat-panel-description> {{p.get('pregunta').value}} </mat-panel-description>
+                <button mat-button data-toggle="modal" data-target="#exampleModal" (click)="itemValue(i)">
+                  <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                  </svg>
+                </button>
+              </mat-expansion-panel-header>
+              <mat-form-field class="form-group col-md-12" >
+                <mat-label>Pregunta</mat-label>
+                <input matInput formControlName="pregunta" required>
+              </mat-form-field>
+              <mat-form-field class="form-group col-md-12">
+                <mat-label>Tipo de Respuesta</mat-label>
+                <mat-select formControlName="tipo" required>
+                  <mat-option value="0">Si/No</mat-option>
+                  <mat-option value="1">1 al 5</mat-option>
+                  <mat-option value="2">1 al 10</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-expansion-panel>
+          </mat-accordion>
         </ng-container>
-    </div>
-    
+      </div>
+    </ng-container>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="save()">Guardar</button>
+  <div *ngIf="validated" class="alert alert-danger" role="alert">
+    Todos lo datos son necesarios.
+  </div>
+  <div *ngIf="dateSave" class="alert alert-success" role="alert">
+    Datos guardados correctamente
+  </div>
+</form>
 
-
-
-    <!-- <div class="form-group col-md-12">
-      <label for="inputAddress">Address</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-    </div>
-    <div class="form-group">
-      <label for="inputAddress2">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputCity">City</label>
-        <input type="text" class="form-control" id="inputCity">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputState">State</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="inputZip">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          Check me out
-        </label>
-      </div>
-    </div> -->
-    <button type="submit" class="btn btn-primary" (click)="ver()">Sign in</button>
-  </form>

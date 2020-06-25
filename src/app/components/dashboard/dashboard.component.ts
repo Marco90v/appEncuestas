@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActionsService } from 'src/app/services/actions.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,13 +10,12 @@ export class DashboardComponent implements OnInit {
 
   public sideBar = false;
 
-  constructor() {}
+  constructor(private action: ActionsService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  abrirCerrar(){
-    this.sideBar = !this.sideBar;
-  }
+  abrirCerrar(){ this.sideBar = !this.sideBar; }
+
+  deleteAnswer(){ this.action.deleteAnswer(); }
 
 }

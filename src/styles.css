@@ -51,7 +51,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .newAnswer{
-    display: inline;
+    /* display: inline; */
+    margin-bottom: 2em;
     cursor: pointer;
 }
 
@@ -65,6 +66,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .containerAccordion{
     margin-bottom: 0.5em;
+}
+
+.alert{
+    margin-top: 1em;
+}
+
+.conTouter{
+    min-height: 75.5vh;
 }
 
 
