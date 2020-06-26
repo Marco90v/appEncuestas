@@ -1,4 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -6,14 +7,19 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 export class ActionsService {
 
   private encuestas: any[];
+  private respuestas: any[] = Array(0);
   @Output() dA = new EventEmitter();
 
   constructor() {}
 
   deleteAnswer(){ this.dA.emit('deleteItem'); }
 
-  getEncuestas(): any[]{
+  getEncuestas(id?: string): any[]{
     this.getStorage();
+    // tslint:disable-next-line: triple-equals
+    if (id != null || id != undefined){
+      return this.encuestas.filter(e => e.ID === id);
+    }
     return this.encuestas;
   }
 
@@ -27,7 +33,7 @@ export class ActionsService {
   setStorage(encuesta: any): boolean{
     try {
       this.getStorage();
-      const ID = this.gererateID(encuesta.nameAnswer, 20);
+      const ID = this.generateID(encuesta.nameAnswer, 20);
       encuesta.ID = ID;
       this.encuestas.push(encuesta);
       localStorage.setItem('encuestas', JSON.stringify(this.encuestas));
@@ -37,7 +43,34 @@ export class ActionsService {
     }
   }
 
-  private gererateID(cadena, largo = 10): any{
+  updateStorage(encuesta: any, id: string): boolean{
+    try {
+      encuesta.ID = id;
+      this.encuestas.map(e => {
+        if (e.ID === id){
+          e.nameAnswer = encuesta.nameAnswer;
+          e.preguntas = encuesta.preguntas;
+        }
+      });
+      localStorage.setItem('encuestas', JSON.stringify(this.encuestas));
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  setRespuesta(respuesta){
+    this.respuestas.push(respuesta);
+    localStorage.setItem('respuestas', JSON.stringify(this.respuestas));
+  }
+
+  getRespuestas(id): any{
+    const respuestas = JSON.parse(localStorage.getItem('respuestas'));
+    // tslint:disable-next-line: no-unused-expression
+    return respuestas.filter(e => e.ID === id );
+  }
+
+  private generateID(cadena, largo = 10): any{
     const text = cadena.replace(/[,.?¿!¡"%()/ /]/g, ''); // cadena formateda sin espacion ni simbolos
     const lt = text.length; // longitud de cadena
     let ID = '';

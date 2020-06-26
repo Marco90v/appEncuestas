@@ -37,6 +37,7 @@ export class NuevaComponent implements OnInit {
   }
 
   save(){
+    // console.log(this.formAnswers.value);
     if (this.formAnswers.invalid !== true){
       const res = this.action.setStorage(this.formAnswers.value);
       if(res){

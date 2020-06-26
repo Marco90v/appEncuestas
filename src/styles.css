@@ -76,6 +76,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     min-height: 75.5vh;
 }
 
+.botones{
+    text-align: right;
+    border-top: #00000014 1px solid;
+}
+
+.example-card{
+    margin-bottom: 1em;;
+}
+
+.noEncuestas{
+    text-align: center;
+}
+
+.nPreguntasEncuestas{
+    margin-left: 16px;
+}
+
 
 /* .mat-form-field-underline {
     //linea inferior del input
