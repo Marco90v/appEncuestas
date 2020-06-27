@@ -18,8 +18,12 @@ export class EncuestasComponent implements OnInit {
   }
 
   iniciar(id){
-    // console.log(id);
     this.ruta.navigate(['/encuesta', id]);
+  }
+
+  ingresar(){
+    this.ruta.navigate(['/dashboard/list']);
+
   }
 
 }

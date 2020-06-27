@@ -1,5 +1,8 @@
 <div class="container">
-    <div class="row">login</div>
+    <div class="row barLogin">
+      <div class="title">Sistema de encuesta</div>
+      <div class="login"><button mat-raised-button (click)="ingresar()">Ingresar</button></div>
+    </div>
     
     <mat-card class="example-card" *ngFor="let encuesta of encuestas">
         <mat-card-header>

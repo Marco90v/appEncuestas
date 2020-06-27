@@ -12,10 +12,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .example-container {
-    /* width: 500px; */
+    
     height: 100vh;
     min-height: 100vh;
-    /* border: 1px solid rgba(0, 0, 0, 0.5); */
+    
 }
   
 .example-sidenav-content {
@@ -56,10 +56,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     cursor: pointer;
 }
 
-/* .mat-form-field + .mat-form-field {
-    margin-left: 8px;
-} */
-
 .numPregunta{
     max-width: 10em;
 }
@@ -91,6 +87,66 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .nPreguntasEncuestas{
     margin-left: 16px;
+}
+
+.contentCanvas{
+    display: inline;
+    width: 400px;
+}
+
+.contentCanvas > canvas{
+    display: inline;
+}
+
+.barLogin{
+    height: 40px;
+    background-color: #80808014;
+    margin-bottom: 2em;
+    border-radius: 10px;
+}
+.login{
+    margin: 0 0 0 auto;
+}
+
+.title{
+    margin: auto 0 auto 3em;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.contaEncuesta{
+    text-align: center;
+    margin: 10em auto;
+    padding: 1em;
+    background-color: #8080801a;
+    border-radius: 1em;
+}
+
+.nameEncuesta{
+    height: 3em;
+    font-size: 1.5em;
+}
+
+.contentEncuesta{
+    margin-top: 1em;
+}
+
+.pregunta{
+    font-size: 1.5em;
+}
+
+.respuesta{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.menu > li{
+    margin-top: 1em;
+}
+
+
+.mat-radio-label{
+    margin-left: 1.5em;
 }
 
 

@@ -39,7 +39,6 @@ export class EncuestaComponent implements OnInit {
     this.contador++;
     this.respuesta = null;
     if (this.contador > this.encuesta.preguntas.length){
-      console.log({ID: this.ID, respuestas: this.respuestas});
       this.action.setRespuesta({ID: this.ID, respuestas: this.respuestas});
       this.ruta.navigate(['']);
     }

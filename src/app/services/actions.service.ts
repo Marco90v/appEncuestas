@@ -7,7 +7,7 @@ import { stringify } from 'querystring';
 export class ActionsService {
 
   private encuestas: any[];
-  private respuestas: any[] = Array(0);
+  private respuestas: any[];
   @Output() dA = new EventEmitter();
 
   constructor() {}
@@ -25,8 +25,12 @@ export class ActionsService {
 
   private getStorage(){
     if (this.encuestas === null || this.encuestas === undefined){
-      const lS = JSON.parse(localStorage.getItem('encuestas'));
-      this.encuestas = lS === null ? [] : lS;
+      const lSE = JSON.parse(localStorage.getItem('encuestas'));
+      this.encuestas = lSE === null ? [] : lSE;
+    }
+    if (this.respuestas === null || this.respuestas === undefined){
+      const lSR = JSON.parse(localStorage.getItem('respuestas'));
+      this.respuestas = lSR === null ? [] : lSR;
     }
   }
 
@@ -60,6 +64,7 @@ export class ActionsService {
   }
 
   setRespuesta(respuesta){
+    this.getStorage();
     this.respuestas.push(respuesta);
     localStorage.setItem('respuestas', JSON.stringify(this.respuestas));
   }
