@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-encuestas',
-  templateUrl: './encuestas.component.html',
-  styleUrls: ['./encuestas.component.css']
+  templateUrl: './encuestas.component.html'
 })
 export class EncuestasComponent implements OnInit {
 

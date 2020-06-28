@@ -1,5 +1,9 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { stringify } from 'querystring';
+import { HttpClient } from '@angular/common/http';
+// siguientes 2 importaciones son ejemplo online
+import { preguntasStorage } from '../../assets/preguntasStorage';
+import { respuestasStorage } from '../../assets/respuestasStorage';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +12,11 @@ export class ActionsService {
 
   private encuestas: any[];
   private respuestas: any[];
+
   @Output() dA = new EventEmitter();
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+  }
 
   deleteAnswer(){ this.dA.emit('deleteItem'); }
 
@@ -26,11 +32,13 @@ export class ActionsService {
   private getStorage(){
     if (this.encuestas === null || this.encuestas === undefined){
       const lSE = JSON.parse(localStorage.getItem('encuestas'));
-      this.encuestas = lSE === null ? [] : lSE;
+      // this.encuestas = lSE === null ? [] : lSE; // para uso normal
+      this.encuestas = lSE === null ? preguntasStorage : lSE; // para pruebas
     }
     if (this.respuestas === null || this.respuestas === undefined){
       const lSR = JSON.parse(localStorage.getItem('respuestas'));
-      this.respuestas = lSR === null ? [] : lSR;
+      // this.respuestas = lSR === null ? [] : lSR; // para uso normal
+      this.respuestas = lSR === null ? respuestasStorage : lSR; // para pruebas
     }
   }
 
@@ -70,10 +78,22 @@ export class ActionsService {
   }
 
   getRespuestas(id): any{
-    const respuestas = JSON.parse(localStorage.getItem('respuestas'));
-    // tslint:disable-next-line: no-unused-expression
-    return respuestas.filter(e => e.ID === id );
+    this.getStorage();
+    return this.respuestas.filter(e => e.ID === id);
   }
+
+  deleted(id){
+    this.encuestas.map((e, i) => {
+      if (e.ID === id){
+        this.encuestas.splice(i , 1);
+       }
+    });
+    // this.encuestas = this.encuestas.filter(e => e.ID !== id);  // No se modifica la vista
+    this.respuestas = this.respuestas.filter(e => e.ID !== id);
+    localStorage.setItem('encuestas', JSON.stringify(this.encuestas));
+    localStorage.setItem('respuestas', JSON.stringify(this.respuestas));
+  }
+
 
   private generateID(cadena, largo = 10): any{
     const text = cadena.replace(/[,.?¿!¡"%()/ /]/g, ''); // cadena formateda sin espacion ni simbolos

@@ -5,8 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
-  templateUrl: './nueva.component.html',
-  styleUrls: ['./nueva.component.css']
+  templateUrl: './nueva.component.html'
 })
 export class EditComponent implements OnInit {
 

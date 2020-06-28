@@ -149,14 +149,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-left: 1.5em;
 }
 
+.resultButton{
+    color: white;
+    background-color: #46c346;
+}
 
 /* .mat-form-field-underline {
     //linea inferior del input
     background-color: green !important;
 }  */
 
-.mat-form-field-ripple {
+/* .mat-form-field-ripple { */
     /*color de linea inferior del input al hacer clic*/
     /* background-color: red !important; */
-}
+/* } */
   

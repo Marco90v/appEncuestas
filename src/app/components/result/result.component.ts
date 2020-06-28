@@ -5,12 +5,10 @@ import {Chart} from 'chart.js';
 
 @Component({
   selector: 'app-result',
-  templateUrl: './result.component.html',
-  styleUrls: ['./result.component.css']
+  templateUrl: './result.component.html'
 })
 export class ResultComponent implements OnInit, AfterViewInit {
 
-  // @ViewChildren('myChart') ctx: QueryList<any>;
   @ViewChildren('myChart') ctx: QueryList<ElementRef>;
 
   public preguntas: any;
@@ -25,7 +23,6 @@ export class ResultComponent implements OnInit, AfterViewInit {
     this.ID = ruta.snapshot.params.ID;
     this.preguntas = action.getEncuestas(this.ID)[0];
     this.respuestas = action.getRespuestas(this.ID);
-    console.log(this.preguntas);
   }
 
   tipoRes(tipo: string): Array<string>{
@@ -99,9 +96,6 @@ export class ResultComponent implements OnInit, AfterViewInit {
     });
   }
 
-  onClick(){
-
-  }
 
   ngOnInit(): void {
   }

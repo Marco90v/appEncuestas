@@ -4,8 +4,7 @@ import { ActionsService } from 'src/app/services/actions.service';
 
 @Component({
   selector: 'app-encuesta',
-  templateUrl: './encuesta.component.html',
-  styleUrls: ['./encuesta.component.css']
+  templateUrl: './encuesta.component.html'
 })
 export class EncuestaComponent implements OnInit {
 
