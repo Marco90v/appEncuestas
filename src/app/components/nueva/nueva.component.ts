@@ -36,12 +36,12 @@ export class NuevaComponent implements OnInit {
   }
 
   save(){
-    // console.log(this.formAnswers.value);
     if (this.formAnswers.invalid !== true){
       const res = this.action.setStorage(this.formAnswers.value);
       if(res){
         this.dateSave = true;
         this.formAnswers.reset();
+        this.preguntas.clear();
         setTimeout(() => {this.dateSave = false; }, 5000);
       }
     }else{

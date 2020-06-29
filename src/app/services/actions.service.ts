@@ -1,6 +1,4 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-// siguientes 2 importaciones son ejemplo online
 import { preguntasStorage } from '../../assets/preguntasStorage';
 import { respuestasStorage } from '../../assets/respuestasStorage';
 
@@ -15,7 +13,7 @@ export class ActionsService {
 
   @Output() dA = new EventEmitter();
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
   deleteAnswer(){ this.dA.emit('deleteItem'); }

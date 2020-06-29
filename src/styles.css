@@ -154,6 +154,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: #46c346;
 }
 
+.header-result, .sub-header-result{
+    text-align: center;
+}
+
+.sub-header-result{
+    margin-bottom: 3em;
+}
+
 /* .mat-form-field-underline {
     //linea inferior del input
     background-color: green !important;

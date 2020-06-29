@@ -1,3 +1,13 @@
-<div class="contentCanvas" *ngFor="let pregunta of preguntas.preguntas; let i = index ">
-    <canvas #myChart class="myChart" id="myChart" width="400" height="400" style="display: inline; margin-right: 5em;" ></canvas>
+<div class="row">
+    <div class="container">
+        <div class="header-result">
+            <h1>{{preguntas.nameAnswer}}</h1>
+        </div>
+        <div class="sub-header-result">
+            <h3>Total de encuestados: {{respuestas.length}}</h3>
+        </div>
+        <div class="contentCanvas" *ngFor="let pregunta of preguntas.preguntas; let i = index ">
+            <canvas #myChart class="myChart" id="myChart" width="400" height="400" style="display: inline; margin-right: 5em;" ></canvas>
+        </div>
+    </div>
 </div>
